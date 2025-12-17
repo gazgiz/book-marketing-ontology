@@ -39,11 +39,62 @@
 \usepackage{xeCJK}
 \xeCJKsetup{space=true}
 
-\setmainfont{Noto Serif}
-\setCJKmainfont{Noto Serif CJK KR}
-\setCJKsansfont{Noto Sans CJK KR}
-\setCJKmonofont{Noto Sans Mono CJK KR}
-        
+\setmainfont{NotoSerifCJKkr-Regular.otf}[
+  Path=fonts/noto/,
+  BoldFont=NotoSerifCJKkr-Bold.otf,
+  ItalicFont=NotoSerifCJKkr-Regular.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=NotoSerifCJKkr-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]
+\setCJKmainfont{NotoSerifCJKkr-Regular.otf}[
+  Path=fonts/noto/,
+  BoldFont=NotoSerifCJKkr-Bold.otf,
+  ItalicFont=NotoSerifCJKkr-Regular.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=NotoSerifCJKkr-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]
+\setCJKsansfont{NotoSansCJKkr-Regular.otf}[
+  Path=fonts/noto/,
+  BoldFont=NotoSansCJKkr-Bold.otf,
+  ItalicFont=NotoSansCJKkr-Regular.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=NotoSansCJKkr-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]
+\setCJKmonofont{NotoSansCJKkr-Regular.otf}[
+  Path=fonts/noto/,
+  BoldFont=NotoSansCJKkr-Bold.otf,
+  ItalicFont=NotoSansCJKkr-Regular.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=NotoSansCJKkr-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]
+%     \newfontfamily\hangulfont{NotoSerifCJKkr-Regular.otf}[
+%       Path=fonts/noto/,
+%       BoldFont=NotoSerifCJKkr-Bold.otf,
+%       ItalicFont=NotoSerifCJKkr-Regular.otf,
+%       ItalicFeatures={FakeSlant=0.2},
+%       BoldItalicFont=NotoSerifCJKkr-Bold.otf,
+%       BoldItalicFeatures={FakeSlant=0.2}
+%     ]
+%     \newfontfamily\hangulfontsf{NotoSansCJKkr-Regular.otf}[
+%       Path=fonts/noto/,
+%       BoldFont=NotoSansCJKkr-Bold.otf,
+%       ItalicFont=NotoSansCJKkr-Regular.otf,
+%       ItalicFeatures={FakeSlant=0.2},
+%       BoldItalicFont=NotoSansCJKkr-Bold.otf,
+%       BoldItalicFeatures={FakeSlant=0.2}
+%     ]
+%     \newfontfamily\hangulfonttt{NotoSansCJKkr-Regular.otf}[
+%       Path=fonts/noto/,
+%       BoldFont=NotoSansCJKkr-Bold.otf,
+%       ItalicFont=NotoSansCJKkr-Regular.otf,
+%       ItalicFeatures={FakeSlant=0.2},
+%       BoldItalicFont=NotoSansCJKkr-Bold.otf,
+%       BoldItalicFeatures={FakeSlant=0.2}
+%     ]    
 \usepackage{setspace}
     
 \usepackage{tikz}
@@ -51,39 +102,10 @@
 
 % Choose the language
 \ifxetexorluatex
-	\usepackage{polyglossia}
-	\setmainlanguage{korean}
-    \setotherlanguage{english}
-    \setmainfont{Noto Serif CJK KR}[
-      Script=Hangul,
-      Language=Korean,
-      Ligatures=TeX,
-      Italicfont=*,
-      ItalicFeatures={FakeSlant=0.2},
-      BoldSlantedFont=* Bold,
-      BoldSlantedFeatures={FakeSlant=0.2}
-    ]
-    \newfontfamily\hangulfont{Noto Serif CJK KR}[
-      Ligatures=TeX,
-      Italicfont=*,
-      ItalicFeatures={FakeSlant=0.2},
-      BoldSlantedFont=* Bold,
-      BoldSlantedFeatures={FakeSlant=0.2}
-    ]
-    \newfontfamily\hangulfontsf{Noto Sans CJK KR}[
-      Ligatures=TeX,
-      Italicfont=*,
-      ItalicFeatures={FakeSlant=0.2},
-      BoldSlantedFont=* Bold,
-      BoldSlantedFeatures={FakeSlant=0.2}
-    ]
-    \newfontfamily\hangulfonttt{Noto Sans Mono CJK KR}[
-      Ligatures=TeX,
-      Italicfont=*,
-      ItalicFeatures={FakeSlant=0.2},
-      BoldSlantedFont=* Bold,
-      BoldSlantedFeatures={FakeSlant=0.2}
-    ]
+% 	\usepackage{polyglossia}
+% 	\setmainlanguage{korean}
+%     \setotherlanguage{english}
+    \usepackage[english]{babel}
 \else
 	\usepackage[english]{babel} % Load characters and hyphenation
 \fi

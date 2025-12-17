@@ -1016,16 +1016,26 @@
 	\RequirePackage{amssymb} % Must be loaded before unicode-math
 	\RequirePackage[force]{filehook} % Fixes an error
 	\RequirePackage{unicode-math} % Math fonts in xetexorluatex
-    \setromanfont[
+    \setromanfont{LibertinusSerif-Regular.otf}[
+		Path=fonts/libertinus/,
+		BoldFont=LibertinusSerif-Bold.otf,
+		ItalicFont=LibertinusSerif-Italic.otf,
+		BoldItalicFont=LibertinusSerif-BoldItalic.otf,
 		Scale=1.04
-	]{Libertinus Serif}
-	\setsansfont[
+	]
+	\setsansfont{LibertinusSans-Regular.otf}[
+		Path=fonts/libertinus/,
+		BoldFont=LibertinusSans-Bold.otf,
+		ItalicFont=LibertinusSans-Italic.otf,
 		Scale=1
-	]{Libertinus Sans}
-	\setmonofont[
+	]
+	\setmonofont{LibertinusMono-Regular.otf}[
+		Path=fonts/libertinus/,
 		Scale=.89
-	]{Liberation Mono}
-	\setmathfont{Libertinus Math}
+	]
+	\setmathfont{LibertinusMath-Regular.otf}[
+		Path=fonts/libertinus/
+	]
     \ifluatex
     \else
         \RequirePackage{morewrites} % Fix some errors related to floats
