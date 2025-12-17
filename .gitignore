@@ -23,3 +23,9 @@
 
 # System files
 .DS_Store
+
+# latexmk artifacts
+*.fdb_latexmk
+*.fls
+*.xdv
+*.synctex.gz
