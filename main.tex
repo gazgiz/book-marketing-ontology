@@ -150,6 +150,15 @@
 \DeclareLanguageMapping{korean}{english}
 \DeclareQuoteAlias{british}{korean}
 
+\addto\captionsenglish{
+	\renewcommand{\contentsname}{목차}
+	\renewcommand{\listfigurename}{그림 목차}
+	\renewcommand{\listtablename}{표 목차}
+	\renewcommand{\figurename}{그림}
+	\renewcommand{\tablename}{표}
+	\renewcommand{\bibname}{참고 문헌}
+}
+
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -200,13 +209,6 @@
 	\textbf{Copyright} \\
 	\copyright\ 2025 \@author \\
 	All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.
-	
-	\medskip
-	
-	\textbf{Colophon} \\
-	This document was typeset with the help of \href{https://sourceforge.net/projects/koma-script/}{\KOMAScript} and \href{https://www.latex-project.org/}{\LaTeX} using the \href{https://github.com/fmarotta/kaobook/}{kaobook} class (MIT License).
-	
-	The source code of the template is available at:\\\url{https://github.com/fmarotta/kaobook}
 	
 	\medskip
 	
