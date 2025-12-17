@@ -1,0 +1,25 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.mw
+*.nlo
+*.nls
+*.out
+*.pdf
+*.run.xml
+*.toc
+*.xdy
+
+# System files
+.DS_Store
