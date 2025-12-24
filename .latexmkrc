@@ -19,7 +19,7 @@ sub makeglossaries {
 }
 
 # Index configuration
-$makeindex = 'upmendex -s index.ist %O -o %D %S';
+$makeindex = 'upmendex -s ../index.ist %O -o %D %S';
 
 # Clean up extensions
 $clean_ext = 'bbl nav out snm xdv synctex.gz nlo nls ilg ind glo gls glg acn acr alg ist';
