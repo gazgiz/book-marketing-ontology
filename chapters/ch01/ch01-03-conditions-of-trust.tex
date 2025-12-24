@@ -2,6 +2,32 @@
 
 신뢰는 관계의 결과가 아니라, 관계가 성립하기 위해 먼저 충족되어야 하는 기본조건에 가깝다. 고객과 브랜드 사이에 관계를 설계한다는 것은, 아직 관계가 깊어지기 이전의 단계에서조차 서로를 전제로 행동할 수 있는 최소한의 안정성을 확보하는 일이다. 이때의 신뢰는 호감이나 충성의 문제가 아니라, 상대를 관계의 구성원으로 받아들여도 되는지에 대한 판단 기준이다.
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    entity/.style={circle, draw=black, thick, minimum size=1.8cm, font=\bfseries, align=center},
+    condition/.style={font=\small, align=center, fill=white, text=black},
+    rel/.style={->, thick, >=Latex}
+]
+
+% Nodes
+\node[entity] (customer) at (90:2.5cm) {고객};
+\node[entity] (product) at (330:2.5cm) {제품};
+\node[entity] (brand) at (210:2.5cm) {브랜드};
+
+% Center Node
+\node[minimum size=1.5cm, font=\bfseries] (trust) at (0,0) {관계의 시작};
+
+% Connections
+\draw[rel] (customer) -- node[condition] {불필요한\\위험 회피} (trust);
+\draw[rel] (product) -- node[condition, pos=0.6] {성능의\\안정적 재현} (trust);
+\draw[rel] (brand) -- node[condition, pos=0.6] {선의의\\해석 기대} (trust);
+
+\end{tikzpicture}
+\caption{신뢰의 3가지 조건}
+\labfig{conditions-of-trust}
+\end{figure}
+
 고객의 관점에서 신뢰는, 이 관계에 참여함으로써 불필요한 위험을 감수하지 않아도 된다는 확신에서 시작된다. 고객은 브랜드가 항상 최선의 선택을 제공하리라고 기대하지 않는다. 대신 결과의 범위가 예측 가능하고, 문제가 발생했을 때 책임이 전가되지 않으며\cite{tax1998customer}, 자신의 판단에 영향을 미칠 핵심 정보가 의도적으로 왜곡되지 않기를 바란다. 이러한 조건이 충족될 때 고객은 브랜드를 매번 새로 검증해야 할 대상으로 보지 않고, 관계를 이어갈 수 있는 전제로 받아들인다.
 
 제품의 관점에서 신뢰는 기능이나 성능에 대한 약속이 실제 사용 경험에서 얼마나 안정적으로 재현되는지와 직결된다. 제품은 관계에서 가장 침묵하는 요소이지만, 동시에 가장 자주 평가되는 존재다. 사용 환경이 달라져도 결과가 극단적으로 흔들리지 않고, 기대했던 역할을 반복적으로 수행할 때 제품은 신뢰 가능한 도구가 된다. 이 신뢰는 브랜드 메시지보다 훨씬 빠르게 형성되며, 한 번 무너지면 관계 전체를 불안정하게 만든다. 제품에 대한 신뢰가 없는 상태에서는 고객--브랜드 관계 역시 전제될 수 없다.
