@@ -1107,7 +1107,10 @@
 
 \let\oldthanks\thanks
 \renewcommand\thanks[1]{%
-    \label{bhfn:0}%
+    \ifx\bhfnZeroDefined\undefined%
+        \label{bhfn:0}%
+        \gdef\bhfnZeroDefined{1}%
+    \fi%
     \oldthanks{#1}%
 }
 
