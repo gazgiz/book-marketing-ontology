@@ -1,1 +1,152 @@
+
+
 \section{욕구의 계층화}
+
+이제 우리는 이론적 논의를 넘어, 마케팅의 실체적 대상들을 모델링할 단계에 이르렀다. 온톨로지를 설계한다는 것은 결국 \enquote{무엇이 존재하는가}를 정의하고, 그 존재들이 \enquote{어떤 관계를 맺는가}를 규명하는 작업이다.
+
+마케팅의 세계를 구성하는 세 가지 핵심 주체는 \texttt{고객(Customer)}, \texttt{제품(Product)}, 그리고 \texttt{브랜드(Brand)}다. 이들이 서로 관계를 맺는 원동력은 무엇일까? 바로 각 주체가 가진 고유한 \enquote{욕구(Needs)}다. 인간에게 매슬로우의 욕구 위계가 있듯이\sidenote{매슬로우(Abraham Maslow)의 욕구 위계 이론(1943)은 인간의 동기가 하위 단계(생리적 욕구)에서 상위 단계(자아실현)로 발전한다고 설명한다. 마케팅에서는 이를 차용하여 고객이 제품을 통해 얻고자 하는 혜택의 단계를 설명하는 데 자주 사용한다.}, 제품과 브랜드에도 시장에서 생존하고 성장하기 위한 그들만의 욕구 위계가 존재한다.
+
+이 섹션에서는 각 주체의 욕구를 구조화하여, 온톨로지 모델링의 기초 뼈대를 세워보자.
+
+
+\vspace{1em}
+\noindent\textbf{고객의 욕구 위계}
+
+고객이 제품을 구매하는 행위는 단순히 물건을 소유하기 위함이 아니다. 그 이면에는 해결하고자 하는 문제나 도달하고자 하는 상태가 있다. 수단-목표 사슬 이론(Means-End Chain Theory)은 이를 잘 설명한다.
+
+\begin{itemize}
+    \item \textsf{1단계: 기능적 욕구 (Functional Needs)} \\
+    가장 밑바닥에는 \enquote{결핍의 해소}가 있다. 배가 고프면 음식이 필요하고, 이동해야 하면 탈것이 필요하다. 이는 제품의 \enquote{속성(Attribute)}과 직접적으로 연결된다.
+    \item \textsf{2단계: 정서적 욕구 (Emotional Needs)} \\
+    기능이 충족되면 감정이 개입한다. 단순히 이동하는 것을 넘어, \enquote{편안함}이나 \enquote{안전함}, 혹은 \enquote{운전의 즐거움}을 원한다. 이는 제품 사용의 \enquote{결과(Consequence)}로 얻어지는 혜택이다.
+    \item \textsf{3단계: 가치적 욕구 (Life Needs)} \\
+    최상위에는 고객의 \enquote{자아(Self)}가 있다. 친환경 제품을 쓰며 \enquote{의식 있는 소비자}가 되고 싶거나, 명품을 통해 \enquote{성공한 사람}으로 인정받고 싶은 욕구다. 이는 고객의 \enquote{가치(Value)}를 실현한다.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.85, transform shape]
+        % Define Triangle vertices (Standard size is sufficient now)
+        \coordinate (A) at (0, 4.5);
+        \coordinate (B) at (-4, 0);
+        \coordinate (C) at (4, 0);
+
+        % Draw Pyramid Outline
+        \draw [thick] (B) -- (C) -- (A) -- cycle;
+
+        % Draw Horizontal Lines for Levels
+        \coordinate (L1_Left) at (-2.66, 1.5);
+        \coordinate (L1_Right) at (2.66, 1.5);
+        \coordinate (L2_Left) at (-1.33, 3);
+        \coordinate (L2_Right) at (1.33, 3);
+
+        \draw [thick] (L1_Left) -- (L1_Right);
+        \draw [thick] (L2_Left) -- (L2_Right);
+
+        % Add Level Labels (Inside - Simple Terms)
+        \node [align=center, font=\bfseries] at (0, 0.75) {속성\\(Attributes)};
+        \node [align=center, font=\bfseries] at (0, 2.25) {결과\\(Consequences)};
+        \node [align=center, font=\bfseries] at (0, 3.60) {가치\\(Values)};
+
+        % Add Meaning Labels (Right Side - Detailed Needs)
+        \node [right, align=left, font=\small] at (4.2, 0.75) { $\leftarrow$ \textbf{1단계: 기능적 욕구} \\ \hspace{1.2em} (Functional Needs)};
+        \node [right, align=left, font=\small] at (4.2, 2.25) { $\leftarrow$ \textbf{2단계: 정서적 욕구} \\ \hspace{1.2em} (Emotional Needs)};
+        \node [right, align=left, font=\small] at (4.2, 3.60) { $\leftarrow$ \textbf{3단계: 가치적 욕구} \\ \hspace{1.2em} (Life Needs)};
+    \end{tikzpicture}
+    \caption[고객 욕구 위계]{고객 욕구의 위계 구조}
+    \labfig{customer-needs-pyramid}
+\end{figure}
+
+
+\vspace{1em}
+\noindent\textbf{제품의 욕구 위계}
+
+제품을 하나의 개체로 본다면, 시장에서 살아남기 위해 무엇이 필요할까?
+
+\begin{itemize}
+    \item \textsf{1단계: 존재의 욕구 (Existence)} \\
+    가장 기본은 \enquote{가용성(Availability)}이다. 고객이 살 수 있는 곳에 있어야 하고, 적절한 가격표가 붙어 있어야 한다. 재고가 없거나 가격이 책정되지 않은 제품은 시장에 \enquote{존재}하지 않는 것과 같다.
+    \item \textsf{2단계: 기능의 욕구 (Functionality)} \\
+    존재한다면 제 구실을 해야 한다. 스펙(Spec)대로 작동해야 하며, 약속한 성능을 제공해야 한다. 이것이 충족되지 않으면 제품은 즉시 도태된다.
+    \item \textsf{3단계: 편의의 욕구 (Usability)} \\
+    기능이 아무리 좋아도 쓰기 불편하면 선택받기 힘들다. 접근하기 쉽고, 사용하기 쉬워야 한다\sidenote{사용자 경험(User Experience, UX)은 사용자가 제품, 시스템, 서비스를 이용하면서 느끼는 지각과 반응, 행동 등 총체적인 경험을 의미한다. 단순히 기능적인 편리함을 넘어, 감정적인 만족, 가치, 심미적인 즐거움까지 포함하는 포괄적인 개념이다.}.
+    \item \textsf{4단계: 매력의 욕구 (Desirability)} \\
+    마지막 단계는 \enquote{갖고 싶게 만드는 것}이다. 디자인, 패키징, 그리고 제품이 가진 스토리가 여기에 해당한다.
+\end{itemize}
+
+
+\vspace{1em}
+\noindent\textbf{브랜드의 욕구 위계}
+
+브랜드는 제품에 의미를 부여하여, 고객의 마음속에 자리 잡기를 원한다. 켈러(Kevin Lane Keller)의 브랜드 자산 모델(CBBE\sidenote{고객 기반 브랜드 자산(Customer-Based Brand Equity, CBBE) 모델은 브랜드의 가치가 고객의 마음속에 형성된 지식에 의해 결정된다는 이론이다. 강력한 브랜드를 구축하기 위해 브랜드 정체성(Identify)에서 시작해 의미(Meaning), 반응(Response)을 거쳐 최종적으로 공명(Resonance)에 이르는 4단계의 피라미드 구조를 제시한다.})은 브랜드가 성장하는 과정을 명확한 위계로 보여준다\cite{keller2013strategic}.
+
+\begin{itemize}
+    \item \textsf{1단계: 정체성의 욕구 (Identity)} \\
+    \enquote{나는 누구인가?} 브랜드는 먼저 고객에게 인식되어야 한다. 이를 브랜드 인지도(Salience)라 한다. 고객이 브랜드를 떠올릴 수 없다면 관계는 시작될 수 없다.
+    \item \textsf{2단계: 의미의 욕구 (Meaning)} \\
+    \enquote{나는 무엇인가?} 인지된 브랜드는 고유한 이미지를 가져야 한다. 탁월한 성능(Performance)이든, 독보적인 이미지(Imagery)든 차별화된 연상 작용을 만들어내야 한다.
+    \item \textsf{3단계: 반응의 욕구 (Response)} \\
+    \enquote{나에 대해 어떻게 생각하는가?} 고객의 판단(Judgments)과 느낌(Feelings)을 이끌어내야 한다. 신뢰감, 우월감, 혹은 따뜻함과 같은 긍정적 반응이 필요하다.
+    \item \textsf{4단계: 관계의 욕구 (Resonance)} \\
+    \enquote{나와 당신은 어떤 사이인가?} 최상위 단계는 고객과의 공명(Resonance)이다. 단순한 구매를 넘어 충성도를 가지고 적극적으로 옹호하는 단계다.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.82, transform shape,
+        node distance=1.0cm and 3.5cm,
+        subject/.style={rectangle, draw=blue!60, thick, rounded corners, minimum width=3.0cm, minimum height=0.9cm, align=center, fill=white, font=\ttfamily},
+        object/.style={rectangle, draw=red!60, thick, rounded corners, minimum width=3.0cm, minimum height=0.9cm, align=center, fill=white, font=\ttfamily},
+        predicate/.style={->, very thick, >=stealth, color=black},
+        label/.style={font=\ttfamily\footnotesize, color=black, anchor=west}
+    ]
+        % Right Column: Objects (Provider Offerings) - Bottom Up
+        \node[object] (Obj_Func) {기능/품질\\(Functionality)};
+        \node[object, above=1.0cm of Obj_Func] (Obj_Use) {사용성/UX\\(Usability)};
+        \node[object, above=1.0cm of Obj_Use] (Obj_Mean) {의미/이미지\\(Meaning)};
+        \node[object, above=1.0cm of Obj_Mean] (Obj_Reso) {관계/공명\\(Resonance)};
+
+        % Internal Evolution Arrows (Solid for clarity)
+        \draw[->, black!80, thick] (Obj_Func) -- (Obj_Use);
+        \draw[->, black!80, thick] (Obj_Use) -- (Obj_Mean);
+        \draw[->, black!80, thick] (Obj_Mean) -- (Obj_Reso);
+        
+        % Right Side Labels (Moved further right to avoid box border)
+        \coordinate (RightAlign) at ($(Obj_Func.east) + (0.6, 0)$);
+        
+        \node[label] at (Obj_Func -| RightAlign) {Product};
+        \node[label] at (Obj_Use -| RightAlign) {Product};
+        \node[label] at (Obj_Mean -| RightAlign) {Brand};
+        \node[label] at (Obj_Reso -| RightAlign) {Brand};
+
+
+        % Left Column: Subjects (Customer Needs)
+        % Position relative to Objects
+        \node[subject, left=3.5cm of Obj_Use] (Sub_Func) {기능적 욕구\\(Functional)};
+        \node[subject] at (Sub_Func |- Obj_Mean) (Sub_Emot) {정서적 욕구\\(Emotional)};
+        \node[subject] at (Sub_Func |- Obj_Reso) (Sub_Life) {가치적 욕구\\(Life)};
+
+        % Predicates (Mapping Arrows)
+        % Functional -> Usability
+        \draw[predicate] (Sub_Func) -- node[midway, fill=white, font=\ttfamily\footnotesize] {require} (Obj_Use);
+        
+        % Emotional -> Meaning
+        \draw[predicate] (Sub_Emot) -- node[midway, fill=white, font=\ttfamily\footnotesize] {seek} (Obj_Mean);
+        
+        % Life -> Resonance
+        \draw[predicate] (Sub_Life) -- node[midway, fill=white, font=\ttfamily\footnotesize] {realize} (Obj_Reso);
+
+        % Background Frames for Context
+        % Increased inner sep to ensure arrows and nodes have clearance
+        \begin{scope}[on background layer]
+             \node[fit=(Sub_Life)(Sub_Func), draw=blue!30, dashed, rounded corners, inner sep=0.4cm, label=above:\textbf{\textsf{Subject (Customer Requirements)}}] {};
+             \node[fit=(Obj_Reso)(Obj_Func), draw=red!30, dashed, rounded corners, inner sep=0.4cm, label=above:\textbf{\textsf{Object (Marketer Offerings)}}] {};
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption[온톨로지 SPO 매핑]{욕구(Subject)와 제공가치(Object)의 온톨로지 매핑}
+    \labfig{needs-ontology-mapping}
+\end{figure}
+
+이처럼 세 주체는 각자의 욕구 위계를 가지고 있다. 마케팅 온톨로지는 바로 이 욕구들이 서로 어떻게 맞물리는지를 정의하는 거대한 지도로 기능한다. 결국 욕구의 계층화란 \textbf{속성을 식별하고, 그 속성들 간에 어떤 관계를 갖는지 규칙을 정해주는 것}을 의미한다. 고객의 \textit{기능적 욕구}가 제품의 \textit{사용성/UX}와 만나고, \textit{정서적 욕구}가 브랜드의 \textit{의미/이미지}와 만나며, 최종적으로 \textit{가치적 욕구}가 브랜드의 \textit{공명}과 만나는 지점을 정확히 연결하는 것이 바로 모델링의 본질이다.
