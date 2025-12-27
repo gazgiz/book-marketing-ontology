@@ -1,0 +1,83 @@
+\section{욕구의 인과성}
+
+앞선 4.1절에서 우리가 각 주체의 욕구 위계를 다룬 이유는 단순히 그 단계를 나열하기 위함이 아니다. 각 단계의 욕구를 충족시키기 위해 우리가 어떤 \texttt{속성(Attribute)}을 갖춰야 하는지, 혹은 시장에서 어떤 속성을 찾아내야 하는지를 분석하기 위함이었다.
+
+이 분석된 내용을 온톨로지라는 지도로 펼쳐 놓으면 비로소 숨겨져 있던 연결 고리가 드러난다. 우리가 제공하는 속성이 과연 고객의 욕구와 논리적으로 연결되는지, 그 \texttt{인과 관계(Causality)}를 눈으로 확인할 수 있게 되는 것이다.\sidenote{\texttt{추적 가능성(Traceability)}과 \texttt{인과성(Causality)}은 구별되어야 한다. 추적 가능성은 \enquote{무엇이 무엇과 연결되어 있는가}를 확인하는 것이고, 인과성은 \enquote{왜 그렇게 연결되는가}를 설명하는 것이다. 온톨로지는 단순한 연결(Traceability)을 넘어 논리적 타당성(Causality)을 검증하는 도구다.} 마케팅 온톨로지는 바로 이 인과성을 검증하고, 막연했던 가치를 \texttt{설명 가능(Explainable)}한 논리로 전환하는 도구다.
+
+\vspace{1em}
+\noindent\textbf{연결의 논리: 속성이 혜택이 되기까지}
+
+고객은 제품의 \enquote{기능(What)}을 사는 것이 아니라, 그 기능이 자신에게 줄 \enquote{혜택(Why)}을 산다\cite{levitt1983marketing}. 
+시오도어 레빗(Theodore Levitt) 교수는 이 점을 다음과 같은 명언으로 남겼다.
+\begin{quote}
+    \enquote{사람들은 0.25인치 드릴을 원하는 것이 아니라, 0.25인치 구멍을 원한다.}\sidenote{Original text: \enquote{People don't want to buy a quarter-inch drill. They want a quarter-inch hole!}}
+\end{quote}
+이는 마케팅이 제품의 \texttt{속성(Attribute)}이 아닌, 고객이 얻게 될 \texttt{혜택(Consequence)}에 집중해야 함을 역설한 고전적인 명제다. 이 전환 과정에는 논리적인 다리가 필요하다.
+
+예를 들어, 어떤 노트북이 \enquote{1kg 미만의 무게}라는 \texttt{속성(Attribute)}을 가졌다고 하자. 이것이 고객의 \enquote{이동의 자유}라는 \texttt{혜택(Consequence)}으로 연결되려면, \enquote{가벼우면 들고 다니기 편하다}는 인과적 합의가 전제되어야 한다. 나아가 이것은 \enquote{효율적인 전문가}라는 \texttt{가치(Value)} 실현으로 이어질 수 있다.
+
+온톨로지 모델링은 이 \enquote{래더링(Laddering)}\sidenote[][-3.5cm]{래더링(Laddering) 기법은 소비자 심층 면접 방식의 하나로, 응답자에게 \enquote{그것이 왜 중요한가?}라는 질문을 반복하여(Why-why technique) 제품의 구체적 속성이 어떤 혜택을 제공하고, 최종적으로 소비자의 어떤 가치를 만족시키는지 추적한다. 레이놀즈와 거트만(Reynolds \& Gutman, 1988)이 체계화한 방법론이다.} 과정을 수학 공식처럼 구조화하는 것이다.
+\begin{itemize}
+    \item $A$ (\texttt{Attribute}: 속성) $\rightarrow$ $C$ (\texttt{Consequence}: 결과/혜택) $\rightarrow$ $V$ (\texttt{Value}: 가치)
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0.8cm and 0.8cm,
+        every node/.style={font=\ttfamily\small, align=center},
+        arrow/.style={->, thick, >=stealth}
+    ]
+        \node (Attr) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm] {Attribute\\(속성)};
+        \node (Cons) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, above right=of Attr] {Consequence\\(혜택/결과)};
+        \node (Val) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, above right=of Cons] {Value\\(가치)};
+
+        \draw [arrow] (Attr) -- node[above left, font=\footnotesize, pos=0.5] {Causes} (Cons);
+        \draw [arrow] (Cons) -- node[above left, font=\footnotesize, pos=0.5] {Realizes} (Val);
+    \end{tikzpicture}
+    \caption[수단-목표 사슬 구조]{속성에서 가치로 이어지는 인과적 사슬 (Means-End Chain)}
+    \labfig{means-end-chain}
+\end{figure}
+
+마케터의 역할은 고객이 이 인과성을 납득할 수 있도록 증명하는 것이다. \enquote{우리 제품은 빠르다}라고 주장하는 것은 가설이지만, \enquote{우리 제품은 $X$ 기술을 썼기 때문에 $Y$ 만큼 빠르며, 따라서 당신의 업무 시간을 $Z$ 시간 단축해준다}라고 말하는 것은 설명 가능한 인과 관계다.
+
+
+\vspace{1em}
+\noindent\textbf{설명 가능성이 신뢰를 만든다}
+
+시장에는 언제나 \index{정보 비대칭}\texttt{정보 비대칭(Information Asymmetry)}이 존재한다. 판매자는 제품에 대해 모든 것을 알지만, 구매자는 알지 못한다. 이 비대칭성 속에서 고객은 본능적으로 방어적인 태도를 취하고 의심한다. \enquote{왜 비싼가?}, \enquote{정말 효과가 있는가?}
+
+기존의 마케팅이 감성적인 설득이나 막연한 이미지에 의존했다면, 온톨로지는 고객이 납득할 수 있는 논리적 근거를 제시하는 데 초점을 맞춘다. 이는 최근 인공지능 분야에서 중요하게 다뤄지는 \texttt{설명 가능한 AI(XAI, eXplainable AI)}의 철학과도 맞닿아 있다. AI가 내린 결론의 과정을 인간이 이해할 수 있어야 신뢰할 수 있듯이, 제품이 주장하는 가치 또한 명확한 인과 관계(Why)를 통해 설명될 수 있어야 한다.
+
+신뢰는 무조건적인 믿음이 아니라, \enquote{검증된 일관성}에서 온다. 우리가 구축하려는 마케팅 온톨로지는 소위 \enquote{감}에 의존하던 마케팅을 \enquote{검증 가능한 구조}로 전환시킨다. 모든 연결 고리는 \enquote{왜냐하면(Because)}으로 설명될 수 있어야 하며, 이것이 바로 4.1에서 정의한 각 주체의 욕구가 서로 만나 폭발적인 시너지를 내기 위한 \enquote{약속(Promise)}이다.
+
+\vspace{2em}
+\noindent\textbf{인과성 단절}
+
+수많은 제품이 뛰어난 기술적 \texttt{속성(Attribute)}을 갖추고도 시장에서 실패한다. 온톨로지 관점에서 이는 속성이 \texttt{결과(Consequence)}로 이어지는 다리가 끊어진 상태, 즉 \enquote{고아 속성(Orphaned Attribute)}이 발생했기 때문이다.
+
+고객은 청소기를 고를때 \enquote{5,000 RPM의 모터}라는 속성 자체를 욕망하지 않는다. 그 속성이 \enquote{빠른 청소}라는 혜택을 제공하고, 결과적으로 \enquote{여가 시간의 확보}라는 가치에 기여할 때만 지갑을 연다. 마케팅 온톨로지는 제품의 수많은 스펙 중 어떤 것이 고객 가치와 연결되지 못하고 버려져 있는지(Death Valley)를 발견하게 해준다.
+
+\vspace{1em}
+\vspace{1em}
+\noindent\textbf{과학적 마케팅과 반증 가능성(Falsifiability)}
+
+인과성의 타당성을 검증하기 위해서는 과학적 방법론의 핵심 기준인 \enquote{반증 가능성}에 주목할 필요가 있다. \textbf{반증 가능성이야말로 인과 관계가 성립하기 위한 최소한의 자격 조건}이기 때문이다.
+
+칼 포퍼(Karl Popper)는 \enquote{반증 불가능한 것은 과학이 아니다}라고 할 정도이다.\cite{popper2002logic}. 이를 마케팅에 적용하면, 반증 불가능한 주장은 인과 관계가 아니라 단순한 \enquote{주장}이나 \enquote{신념}에 불과하다는 뜻이 된다. 온톨로지에서 말하는 인과성은 \enquote{우리 브랜드는 훌륭하다}와 같은 모호한 수사가 아니다. 이는 참거짓을 가릴 수 있는 명제여야 한다.
+
+\begin{itemize}
+    \item \textbf{비과학적 주장}: \enquote{우리는 고객을 사랑합니다.} (검증 불가 $\rightarrow$ 인과성 없음)
+    \item \textbf{과학적 주장}: \enquote{우리는 $X$ 기술을 통해 대기 시간을 10분 줄여줌으로써 고객의 편의성을 높인다.} (검증 가능 $\rightarrow$ 인과성 성립)
+\end{itemize}
+
+진정한 인과 관계는 \enquote{무조건 맞다}고 우기는 것이 아니라, \enquote{틀릴 수 있는 가능성(Risk)}을 내포하고 있으며, 그것을 실증적으로 증명해낼 때 비로소 성립한다. 이 검증 과정을 통과하지 못한 연결 고리는 온톨로지 상에서 가짜 링크(Fake Link)다.
+
+\vspace{1em}
+\noindent\textbf{연결의 유형: 하드 링크와 소프트 링크}
+
+인과 관계에는 두 가지 층위가 있다.
+첫째는 \texttt{하드 링크(Hard Link)}다. 이는 물리적이고 공학적인 인과 관계다. 예를 들어 \enquote{CPU 클럭이 높다(속성) $\rightarrow$ 연산 속도가 빠르다(결과)}는 명확한 물리 법칙에 기반한다.
+둘째는 \texttt{소프트 링크(Soft Link)}다. 이는 심리적이고 경험적인 인과 관계다. \enquote{둥근 모서리 디자인(속성) $\rightarrow$ 부드럽고 친근한 느낌(결과)}은 물리 법칙이 아니라 인간의 인지 구조에 기반한다.
+
+마케팅 온톨로지는 이 두 가지 링크를 모두 포함해야 한다. 엔지니어는 하드 링크에 집중하고, 디자이너와 마케터는 소프트 링크에 집중하는 경향이 있다. 온톨로지는 이들이 서로 다른 언어로 이야기하는 것을 하나의 인과 사슬로 묶어주는 \enquote{공통 언어(Lingua Franca)} 역할을 수행해야 한다.
