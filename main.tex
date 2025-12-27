@@ -178,7 +178,7 @@
 
 \date{\today}
 
-\publishers{지그재그}
+\publishers{지그재그\textsuperscript{**}\begingroup\renewcommand{\thefootnote}{**}\footnotetext{지식그래프 재미나게 그어보기}\endgroup}
 
 %----------------------------------------------------------------------------------------
 
@@ -205,18 +205,22 @@
 %----------------------------------------------------------------------------------------
 
 \makeatletter
-\uppertitleback{\@titlehead} % Header
-
-\lowertitleback{
- \textbf{저작권} \\
-	\copyright\ 2025 \@author \\
- 이 책의 저작권은 저자에게 있습니다. 저작권법에 의해 보호를 받는 저작물이므로 저자와 출판사의 문서에 의한 허락 없이 무단 전재와 복제를 금합니다.
+\uppertitleback{%
+  \begin{minipage}[t][\textheight][b]{\textwidth}
+	\@titlehead
+	\par\vfill
+	\textbf{저작권} \\
+	\copyright\ 2025 김정석, Ph.D. \\
+	이 책의 저작권은 저자에게 있습니다. 저작권법에 의해 보호를 받는 저작물이므로 저자와 출판사의 문서에 의한 허락 없이 무단 전재와 복제를 금합니다.
 	
 	\medskip
 	
- \textbf{발행} \\
-	2025년 12월, \@publishers 발행
-}
+	\textbf{발행} \\
+	2025년 12월, 지그재그 발행
+  \end{minipage}
+} % Header
+
+\lowertitleback{}
 \makeatother
 
 %----------------------------------------------------------------------------------------
