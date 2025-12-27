@@ -1,1 +1,58 @@
 \section{맥락의 최적화}
+
+\texttt{타겟팅(Targeting)}이 \enquote{누구에게(Who)}를 찾는 과정이라면, \texttt{최적화(Optimization)}는 \enquote{어떤 맥락(Context)에서}를 맞추는 과정이다. 과거의 마케팅이 \enquote{30대 남성}이라는 정적인 세그먼트를 찾는 데 집중했다면, 온톨로지 기반의 마케팅은 그가 현재 \enquote{어떤 상태(State)}에 있으며, \enquote{무엇을 필요로 하는지(Needs)}를 파악하여 그에 맞는 최적의 제안\sidenote{여기서 \enquote{최적}이란 단순히 통계적 확률이 높다는 뜻이 아니다. 4장에서 다룬 욕구의 위계(Hierarchy of Needs) 구조를 따라, 고객이 현재 느끼는 결핍의 원인을 인과적으로 추적하여 논리적 근거(Grounds)를 갖춘 제안이라는 의미다.}을 하는 데 집중한다.
+
+\textbf{동적 적합성(Dynamic Fit)의 추구}
+
+최적화는 고정된 정답을 찾는 것이 아니라, 끊임없이 변하는 사용자의 상황에 가장 적합한(Fit) 메시지와 채널을 매칭하는 것이다. 이는 마치 움직이는 표적을 맞추는 것과 같다. 사용자가 \enquote{검색} 단계에 있을 때와 \enquote{비교} 단계에 있을 때, 필요한 정보는 완전히 다르다. 온톨로지는 사용자의 행동 데이터를 통해 그가 그래프 상의 \enquote{어느 좌표}에 위치해 있는지를 실시간으로 알려준다.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        node distance=2cm,
+        entity/.style={draw, circle, minimum size=1.5cm, align=center, font=\small},
+        attribute/.style={draw, rectangle, rounded corners, minimum height=1cm, align=center, fill=gray!10, font=\small},
+        context/.style={draw, dashed, circle, minimum size=2cm, align=center, font=\small},
+        arrow/.style={->, >=stealth, thick}
+    ]
+    
+    % Nodes
+    \node[entity] (user) {사용자};
+    
+    \node[attribute, above right=of user] (skin) {SkinType:\\건성 피부};
+    \node[attribute, right=of user] (season) {Season:\\겨울};
+    \node[attribute, below right=of user] (action) {Query:\\크림 조회};
+    
+    \node[entity, right=4cm of user, fill=black!10] (coordinate) {맥락\\좌표};
+    
+    \node[attribute, right=of coordinate, fill=black!80, text=white] (offer) {제안:\\겨울철 보습\\솔루션};
+    
+    % Edges
+    \draw[arrow] (user) -- (skin);
+    \draw[arrow] (user) -- (action);
+    
+    \draw[arrow] (skin) -- (coordinate);
+    \draw[arrow] (season) -- (coordinate);
+    \draw[arrow] (action) -- (coordinate);
+    
+    \draw[arrow, double] (coordinate) -- node[above, font=\small] {매칭} (offer);
+    
+    \end{tikzpicture}
+    \caption[온톨로지 좌표와 제안 매칭의 구조]{온톨로지 좌표와 제안 매칭의 구조. 사용자의 속성(Dry Skin), 환경(Winter), 행동(View)이 결합되어 하나의 맥락 좌표를 형성하고, 시스템은 이 좌표에 최적화된 제안을 매칭한다.}
+    \labfig{context_coordinates}
+\end{figure}
+
+\begin{itemize}
+    \item \texttt{좌표(Coordinates)}: 온톨로지 그래프에서 사용자와 연결된 노드들(예: 최근 본 상품, 장바구니 상태, 유입 검색어)이 곧 사용자의 현재 맥락을 정의하는 좌표가 된다.\sidenote{어떤 사용자가 \enquote{건성 피부(SkinType)}라는 속성을 가지고 있고, 현재 \enquote{겨울(Season)}이며, 방금 \enquote{고보습 크림(Product)}을 조회했다면, 이 세 가지 노드의 교차점이 바로 이 사용자의 정확한 좌표다.}
+    \item \texttt{매칭(Matching)}: 이 좌표에 가장 논리적으로 부합하는 \texttt{제안(Offer)}을 연결하는 것이 최적화의 핵심이다.\sidenote{앞선 좌표의 사용자에게는 무차별적인 \enquote{화장품 할인 쿠폰}이 아니라, \enquote{겨울철 건성 피부를 위한 보습 솔루션}이라는 구체적인 제안(Offer)이 매칭되어야 한다. 이것이 확률 게임을 넘어선 논리적 최적화다.}
+\end{itemize}
+
+\textbf{피드백 루프와 진화}
+
+최적화의 완성은 사용자의 \texttt{반응(Response)}을 통해 이루어진다. 시스템이 사용자의 맥락을 \enquote{구매 임박}으로 판단하여 쿠폰을 보냈다고 가정해보자. 만약 사용자가 반응하지 않았다면, 두 가지 가능성이 있다. 제안이 매력적이지 않았거나, 맥락 판단이 틀렸거나.
+
+온톨로지 시스템은 이러한 피드백을 다시 데이터로 흡수한다. \enquote{A 상황에서 B 제안은 실패했다}는 사실 자체가 새로운 지식이 되어, 다음번의 판단 로직을 정교하게 만든다. 결국 최적화는 일방적인 전달이 아니라, 사용자와 시스템이 주고받는 \texttt{상호작용의 루프(Interaction Loop)}를 통해 서로의 의도를 맞춰가는 과정이다.
+
+\textbf{최적화의 점근선(The Asymptote of Optimization)}
+
+하지만 온톨로지를 통한 최적화가 모든 마케팅 문제를 해결하는 \enquote{만능 열쇠}는 아니다. 인간의 욕망은 수시로 변하며, 데이터로 포착되지 않는 무작위성(Randomness)이 항상 존재하기 때문이다. 따라서 온톨로지 모델링에 기반한 마케팅의 목표는 완벽한 예측이 아니라, 예측의 \enquote{오차 범위를 줄여나가는 것}이다. 우리는 정답에 완전히 도달할 수는 없지만, 정답을 향해 끊임없이 다가가는 \texttt{점근선(Asymptote)} 위에 서 있다.
