@@ -2,6 +2,8 @@ $pdf_mode = 5; # Use xelatex
 $postscript_mode = $dvi_mode = 0;
 
 $pdflatex = 'xelatex %O %S';
+$try_to_use_biber = 1;
+
 
 
 # Nomenclature configuration
