@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[paperwidth=6in, paperheight=9in, margin=0cm]{geometry}
+\usepackage{xeCJK}
+\xeCJKsetup{CJKspace=true} % Fix Korean spacing
+\usepackage{fontspec}
+\usepackage{tikz}
+\usetikzlibrary{calc, positioning, shadows.blur, shapes.geometric, backgrounds, fit, fadings, patterns}
+\usepackage{xcolor}
+\usepackage{anyfontsize}
+
+% Refined Modern Color Palette
+\definecolor{bgdeep}{RGB}{8, 12, 20} % Slightly darker for contrast
+\definecolor{techcyan}{RGB}{0, 255, 255} % Pure Cyan for max pop
+\definecolor{techmagenta}{RGB}{255, 20, 147} % Deep Pink
+\definecolor{techwhite}{RGB}{255, 255, 255}
+\definecolor{gridgray}{RGB}{60, 70, 90} % Lighter grid for visibility
+\definecolor{titlegray}{RGB}{200, 210, 220} % Soft white for subtitles
+
+% Fonts
+\setCJKmainfont{NotoSerifCJKkr-Regular.otf}[
+  Path=fonts/noto/,
+  BoldFont=NotoSerifCJKkr-Bold.otf
+]
+\setCJKsansfont{NotoSansCJKkr-Regular.otf}[
+  Path=fonts/noto/,
+  BoldFont=NotoSansCJKkr-Bold.otf
+]
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{tikzpicture}[remember picture, overlay]
+    % 1. Background
+    \fill[bgdeep] (current page.south west) rectangle (current page.north east);
+    
+    % 2. Abstract Grid Background (Subtle)
+    \draw[pattern=crosshatch dots, pattern color=gridgray, opacity=0.15] 
+        (current page.south west) rectangle (current page.north east);
+
+    % 3. Geometric Network Structure (Hexagonal Mesh)
+    \begin{scope}[shift={($(current page.center)+(0,2)$)}, scale=0.8]
+        % Define Hexagon Points FIRST
+        \foreach \i in {0,60,...,300} {
+            \coordinate (Hex\i) at (\i:3.5);
+        }
+
+        % Now Draw Connections requiring all points to exist
+        \foreach \i in {0,60,...,300} {
+            \draw[techcyan, opacity=0.2, ultra thin] (0,0) -- (Hex\i);
+            \foreach \j in {0,60,...,300} {
+                 % Calculate distance to filter connections (only close ones)
+                 \pgfmathsetmacro{\dist}{veclen(cos(\i)*3.5-cos(\j)*3.5, sin(\i)*3.5-sin(\j)*3.5)}
+                 % Draw lines between all defined nodes
+                 \ifdim \dist pt < 4cm
+                    \draw[techcyan, opacity=0.1] (Hex\i) -- (Hex\j);
+                 \fi
+            }
+        }
+        
+        % Outer Ring
+        \draw[techcyan, ultra thick, opacity=0.9] (0,0) circle (3.5);
+        \draw[techmagenta, thin, opacity=0.7, dashed] (0,0) circle (3.8);
+        
+        % Floating Nodes (Data Points)
+        \foreach \angle in {30, 90, 150, 210, 270, 330} {
+            \node[circle, fill=bgdeep, draw=techcyan, line width=1.5pt, inner sep=0pt, minimum size=0.4cm] at (\angle:3.5) {};
+            \node[circle, fill=techwhite, inner sep=0pt, minimum size=0.15cm] at (\angle:3.5) {};
+        }
+
+        % Inner Core (The Logic)
+        \node[regular polygon, regular polygon sides=6, minimum size=4cm, draw=techmagenta, opacity=0.6, line width=1pt, rotate=30] at (0,0) {};
+        \node[regular polygon, regular polygon sides=6, minimum size=3cm, draw=techcyan, opacity=0.9, line width=1.5pt] at (0,0) {};
+        
+        % Central Concept Text
+        \node[text=techwhite] at (0,0.3) {\sffamily\fontsize{10}{12}\selectfont SYSTEM OF};
+        \node[text=techcyan] at (0,-0.3) {\sffamily\bfseries\fontsize{14}{16}\selectfont TRUST};
+    \end{scope}
+
+    % 4. Connection Lines to Title (Visual Flow)
+    \draw[techcyan, opacity=0.5] ($(current page.center)+(0,-1.5)$) -- ($(current page.center)+(0,-3)$);
+    \fill[techcyan] ($(current page.center)+(0,-3)$) circle (2pt);
+
+    % 5. Title Section (Modern Typography)
+    \node[anchor=north, align=center] at ($(current page.center) + (0, -3.5)$) {
+        \sffamily\color{titlegray}
+        \fontsize{24}{30}\selectfont 마케팅을 이해하는\\[0.8em]
+        \fontsize{42}{50}\selectfont\bfseries\color{techwhite} 온톨로지\\[0.2em]
+        \fontsize{42}{50}\selectfont\bfseries\color{techwhite} ONTOLOGY\\[1.5em] 
+        \fontsize{14}{20}\selectfont\color{techmagenta} 논리로 설계하는 관계의 기술
+    };
+
+    % 6. Author Section
+    %\node[anchor=south] at ($(current page.south) + (0, 3)$) {
+    %    \sffamily\color{gridgray!50!white}\fontsize{12}{16}\selectfont
+    %    Written by \textbf{Justin Kim}, Ph.D.
+    %};
+    
+    % 7. Footer / Brand
+    \node[anchor=south] at ($(current page.south) + (0, 1.5)$) {
+        \sffamily\color{gridgray}\fontsize{9}{11}\selectfont
+        RELATIONSHIP ARCHITECT SERIES VOL.1
+    };
+    
+    % Decorative Accent Bars
+    \fill[techcyan] ($(current page.north west) + (0, -1)$) rectangle ($(current page.north west) + (0.5, -3)$);
+    \fill[techmagenta] ($(current page.south east) + (0, 1)$) rectangle ($(current page.south east) + (-0.5, 3)$);
+
+\end{tikzpicture}
+
+\end{document}

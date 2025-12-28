@@ -161,7 +161,13 @@
 	\renewcommand{\bibname}{참고 문헌}
 }
 
+\usepackage{pdfpages} % Required for including cover PDF
+
 \begin{document}
+% Include Cover Page (Must be built first as build/cover.pdf)
+\IfFileExists{build/cover.pdf}{
+    \includepdf[pages=-]{build/cover.pdf}
+}{}
 
 %----------------------------------------------------------------------------------------
 %	BOOK INFORMATION
